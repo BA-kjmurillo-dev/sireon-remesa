@@ -4,10 +4,7 @@ import com.sireon.remesa.persistence.entity.ValoresGlobalesRemesasEntity;
 import com.sireon.remesa.service.ValoresGlobalesRemesasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,10 @@ public class ValoresGlobalesRemesasController {
     @GetMapping("/{codigo}")
     public ResponseEntity<ValoresGlobalesRemesasEntity> get(@PathVariable String codigo){
         return ResponseEntity.ok(this.remesasService.get(codigo));
+    }
+
+    @PostMapping
+    public ResponseEntity<ValoresGlobalesRemesasEntity> save(@RequestBody ValoresGlobalesRemesasEntity entity){
+        return ResponseEntity.ok(this.remesasService.save(entity));
     }
 }

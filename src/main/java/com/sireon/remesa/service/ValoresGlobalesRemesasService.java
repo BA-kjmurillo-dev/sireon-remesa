@@ -23,4 +23,8 @@ public class ValoresGlobalesRemesasService {
     public ValoresGlobalesRemesasEntity get(String codigo){
         return this.remesasRepository.findById(codigo).orElse(null);
     }
+
+    public ValoresGlobalesRemesasEntity save(ValoresGlobalesRemesasEntity valoresGlobalesRemesasEntity){
+        return this.remesasRepository.save(valoresGlobalesRemesasEntity);
+    }
 }
