@@ -1,11 +1,9 @@
 package com.sireon.remesa.client;
 
+import com.sireon.remesa.config.SoapConfig;
 import com.sireon.remesa.wsdl.*;
-import com.sireon.remesa.wsdl.ServicesCredentials;
-import com.sireon.remesa.wsdl.ServicesRequest007ItemSolicitud;
-import com.sireon.remesa.wsdl.ServicesRequest007;
-import com.sireon.remesa.wsdl.WSSIREON007CONSULTAPORIDENTIFICADOR;
-import com.sireon.remesa.wsdl.WSSIREON007CONSULTAPORIDENTIFICADORResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
