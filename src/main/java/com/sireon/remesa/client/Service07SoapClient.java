@@ -1,23 +1,17 @@
 package com.sireon.remesa.client;
 
-import com.sireon.remesa.config.SoapConfig;
-import com.sireon.remesa.wsdl.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
+import com.sireon.remesa.wsdl.service07.*;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
-import java.util.List;
+public class Service07SoapClient extends WebServiceGatewaySupport {
 
-public class SoapClient extends WebServiceGatewaySupport {
-
-    // public List<ServicesResponse007ItemTransfer> getRemittanceByIdentifier() {
     public String getRemittanceByIdentifier() {
         //Credentials
         ServicesCredentials credentials  = new ServicesCredentials();
         credentials.setServicesUser("SIREON_TELLER");
         credentials.setServicesPassword("JTEgi4sCvTg1H67");
-        // credentials.setServicesToken("");
+        credentials.setServicesToken("");
 
         //Item Solicitud
         ServicesRequest007ItemSolicitud itemSolicitud = new ServicesRequest007ItemSolicitud();
@@ -33,7 +27,7 @@ public class SoapClient extends WebServiceGatewaySupport {
         WSSIREON007CONSULTAPORIDENTIFICADOR remittanceByIdentifier = new WSSIREON007CONSULTAPORIDENTIFICADOR();
         remittanceByIdentifier.setServicesrequest007(request007);
 
-        SoapActionCallback callback = new SoapActionCallback("SIREONGFA");
+        SoapActionCallback callback = new SoapActionCallback("http://10.128.248.118/SIREONGFA/awssireon007.aspx?wsdl");
         WSSIREON007CONSULTAPORIDENTIFICADORResponse response = (WSSIREON007CONSULTAPORIDENTIFICADORResponse) getWebServiceTemplate().marshalSendAndReceive("http://10.128.248.118/SIREONGFA/awssireon007.aspx?wsdl", remittanceByIdentifier, callback);
         String code = response.getServicesresponse007().getServicesResponse().getMessageCode();
         String message = response.getServicesresponse007().getServicesResponse().getMessage();
